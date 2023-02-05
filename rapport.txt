@@ -1,0 +1,30 @@
+Objectif :  
+Créer une application basée sur une architecture micro-service qui permet de gérer les factures contenant des produits et appartenant à un client.
+Dans ce projet nous allons voir comment créer une architecture micro-service en reliant un micro service customer,inventory et billing
+Pour reliées ses micros-services il faut configurer la gateway pour connaitre le chemin de chaque micro service et configurer le registre eureka server pour connaitre l'emplacement et le nom de chaque micro service.
+
+1)Pour commencer on crée le premier micro service qui est CUSTOMER
+CUSTOMER est crée sous 4 couches la couches :
+Entity
+Repository
+Service
+Web
+
+2)puis on crée le deuxième micro service qui est INVENTORY meme chose sous 4 Couches :
+Entity
+Repository
+Service
+Web
+
+3)On crée la gateway
+4)Il y a deux types de configuration de la gateway: 
+Configuration statique,Configuration dynamique
+
+5)On crée le le registre eureka server
+
+
+6)Création d'un troisième micro service "BILLING"
+Le service BILLING regroupe les information des deux autres micro service INVENTORY et CUSTOMER
+Pour faire cela, on utilise le framework OPENFEIGN, BILLING est crée sous 5 couches la couches :Entity,Model,Repository,Service,Web
+Dans la couche model on crée deux classes inventory et customer et dans billing on sauvegarde juste les id des customers et des produits
+Quand on veut afficher une facture on a juste a prendre l'id du customer et les id des produits et on les cherches dans les micros services "INVENTORY et CUSTOMER".
